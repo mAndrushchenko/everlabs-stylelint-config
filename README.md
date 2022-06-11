@@ -16,16 +16,23 @@ npm install stylelint-config-standard-scss stylelint-config-recommended-scss --s
 ```
 
 
-### 3. Stylelint order
+### 3. Stylelint rules order
 ```
 npm install stylelint-order stylelint-config-rational-order --save-dev
 ```
 
 
-### 4. Copy file [``.sylelintrc.yml``](.stylelintrc.yml) and paste it to the root folder in the project
+### 4. Also need to install ``postcss``
+```
+npm install postcss --save-dev
+```
+This library is needed to read custom rules
 
 
-### 5. Now need enable linter in the IDE
+### 5. Copy file [``.stylelintrc.yml``](.stylelintrc.yml) and paste it to the root folder in the project
+
+
+### 6. Now need to enable linter in the IDE
 
 
 #### For JetBrains (Webstorm, Rubymine)
@@ -67,7 +74,7 @@ Now need to add (don't replace) to the ``settings.json`` next rules:
 Don't forget to save file and then linter should works.
 
 
-### 6. Add script to ``package.json``
+### 7. Add script to ``package.json``
 
 ```json
 {
@@ -80,10 +87,17 @@ Don't forget to save file and then linter should works.
 Replace ``[YOUR_PATH]`` to path from your root folder of the project to folder where you store styles. If you don't need autofix, delete ``--fix``.
 
 
+### 8. Lets test!
+For start testing your project, run the command below:
+```
+npm run lint-css
+```
+
+
 ## Customisation
 
 
-You can extend [``.sylelintrc.yml``](.stylelintrc.yml) file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
+You can extend [``.stylelintrc.yml``](.stylelintrc.yml) file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
 
 ```yaml
 ignoreFiles: [
