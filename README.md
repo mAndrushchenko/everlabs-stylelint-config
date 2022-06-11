@@ -1,4 +1,5 @@
 # Everlabs stylelint config
+The [``.stylelintrc.yml``](.stylelintrc.yml) includes the list of rules for SCSS that help you avoid errors and enforce conventions in your styles.
 
 
 ## Installation
