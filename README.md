@@ -98,7 +98,7 @@ npm run lint-css
 ## Customisation
 
 
-You can extend [``.stylelintrc.yml``](.stylelintrc.yml) file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
+You can extend [``.stylelintrc.yml``](.stylelintrc.yml) file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list:
 
 ```yaml
 ignoreFiles: [
@@ -135,7 +135,7 @@ Everlabs config extends:
 - [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss)
 - [stylelint-config-rational-order](https://github.com/constverum/stylelint-config-rational-order)
 
-The ``stylelint-config-standard-scss`` in turn under hood extend others:
+The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [stylelint-config-recommended](https://stylelint.io/user-guide/rules/list/#avoid-errors)
 - [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard/blob/main/index.js)
 - [stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss)
