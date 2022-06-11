@@ -1,35 +1,47 @@
 # Everlabs stylelint config
+
+
 ## Installation
+
 
 ### 1. Stylelint
 ```
 npm install stylelint --save-dev
 ```
-### 2. CSS and SCSS stylelint configs
 
+
+### 2. CSS and SCSS stylelint configs
 ```
-npm install stylelint stylelint-config-standard-scss stylelint-config-recommended-scss --save-dev
+npm install stylelint-config-standard-scss stylelint-config-recommended-scss --save-dev
 ```
+
 
 ### 3. Stylelint order
 ```
 npm install stylelint-order stylelint-config-rational-order --save-dev
 ```
+
+
 ### 4. Copy file ``.sylelintrc.yml`` and paste it to the root folder of the project
+
+
 ### 5. Now need enable linter in the IDE
+
+
 #### For JetBrains (Webstorm, Rubymine)
-Open **File/settings**. In search input type **stylelint**. Then check **Enable**
+Open **File/settings**. In search input type **stylelint**. Then check **Enable**:
 
 ![jet_brains_step_1](assets/jetbrains_step_1.png)
 
-Click on 3 dots and select``node-modules/stylelint``. Than click on **Apply** and **OK**. 
+Click on 3 dots and select``node-modules/stylelint``. Than click on **Apply** and **OK**:
 
 ![jet_brains_step_1](assets/jetbrains_step_2.png)
 
 Now linter should working.
 
+
 #### For Visual Code
-First need to install plugins **Prettier** and **Stylelint**
+First need to install plugins **Prettier** and **Stylelint**:
 
 ![jet_brains_step_1](assets/vs_step_1.png)
 
@@ -54,6 +66,7 @@ Now need to add (don't replace) to the ``settings.json`` next rules:
 ```
 Don't forget to save file and then linter should works.
 
+
 ### 6. Add script to ``package.json``
 
 ```json
@@ -63,9 +76,12 @@ Don't forget to save file and then linter should works.
   }
 }
 ```
-Replace ``[YOUR_PATH]`` to path from you root folder of the project to folder where you store styles. If you don't need autofix, delete ``--fix``.
+
+Replace ``[YOUR_PATH]`` to path from your root folder of the project to folder where you store styles. If you don't need autofix, delete ``--fix``.
+
 
 ## Customisation
+
 
 You can extend ``.stylelintrc.yml`` file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
 
@@ -81,7 +97,8 @@ ignoreFiles: [
   "**/example_file.scss"
 ]
 ```
-Also you can disable or enable some rules that doesn't fit to your project
+
+Also you can disable or enable some rules that doesn't fit to your project:
 
 ```yaml
 rules:
@@ -97,6 +114,8 @@ The list of rules:
 
 
 ## Extends
+
+
 Everlabs config extends:
 - [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss)
 - [stylelint-config-rational-order](https://github.com/constverum/stylelint-config-rational-order)
