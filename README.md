@@ -22,7 +22,7 @@ npm install stylelint-order stylelint-config-rational-order --save-dev
 ```
 
 
-### 4. Copy file ``.sylelintrc.yml`` and paste it to the root folder of the project
+### 4. Copy file [``.sylelintrc.yml``](.stylelintrc.yml) and paste it to the root folder in the project
 
 
 ### 5. Now need enable linter in the IDE
@@ -83,7 +83,7 @@ Replace ``[YOUR_PATH]`` to path from your root folder of the project to folder w
 ## Customisation
 
 
-You can extend ``.stylelintrc.yml`` file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
+You can extend [``.sylelintrc.yml``](.stylelintrc.yml) file by adding other rules. For example your project has SCSS files that should not be linted. You can add this files to the list;
 
 ```yaml
 ignoreFiles: [
