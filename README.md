@@ -127,6 +127,15 @@ The list of rules:
 - [Rules order](https://github.com/hudochenkov/stylelint-order)
 - [Example config with order rules](https://github.com/maxdenaro/maxgraph-youtube-source/blob/master/stylelint/.stylelintrc)
 
+ For disabling specific line write ``/* stylelint-disable-next-line [RULE_NAME] */``:
+```scss
+.list-item {
+  /* stylelint-disable-next-line color-named */
+  color: green;
+}
+```
+More about ignoring rules in the files you can find [here](https://stylelint.io/user-guide/ignore-code/)
+
 
 ## Extends
 
