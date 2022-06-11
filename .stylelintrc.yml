@@ -1,0 +1,44 @@
+# All rules you can find in sources below:
+# for CSS: https://stylelint.io/user-guide/rules/list
+# for SCSS: https://github.com/stylelint-scss/stylelint-scss#list-of-rules
+# for rule order: https://github.com/hudochenkov/stylelint-order
+
+# Rules order config example https://github.com/maxdenaro/maxgraph-youtube-source/blob/master/stylelint/.stylelintrc
+
+extends: ["stylelint-config-standard-scss", "stylelint-config-rational-order"]
+
+ignoreFiles: [
+  # Exclude all min.scss files
+  "**/*.min.scss",
+
+  # Exclude vendors
+  "**/vendors/**/*.scss",
+]
+
+rules:
+  color-function-notation: null
+  color-named: "never"
+  max-nesting-depth: [4, { ignore: ["pseudo-classes"] }]
+  no-duplicate-selectors: null
+  no-unknown-animations: true
+  property-no-vendor-prefix: null
+  order/order: [
+    "custom-properties",
+    "dollar-variables",
+    { type: "at-rule", name: "include", hasBlock: false },
+    "declarations",
+    { type: "rule", selector: "&:before" },
+    { type: "rule", selector: "&:after" },
+    "rules",
+    { type: "rule", selector: "&:first-child" },
+    { type: "rule", selector: "&:last-child" },
+    { type: "rule", selector: "&\\..+" },
+    { type: "rule", selector: "&__.+" },
+    { type: "rule", selector: "." }
+  ]
+  selector-pseudo-element-colon-notation: null
+  selector-class-pattern: ["^(--[a-z][a-z0-9]*)(-[a-z0-9]+)*$|^([a-z][a-z0-9]*)(((-)|(__))[a-z0-9]+)*$", {
+    message: "Expected format: .class-name | .--class-modification | .block-class__element-class (selector-class-pattern)",
+    resolveNestedSelectors: true
+  }]
+  value-no-vendor-prefix: [true, { ignoreValues: ["box"] }]
