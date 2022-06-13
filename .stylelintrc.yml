@@ -32,6 +32,8 @@ rules:
     "rules",
     { type: "rule", selector: "&:first-child" },
     { type: "rule", selector: "&:last-child" },
+
+#    Next 3 rules related to class orders and need to test in the project
     { type: "rule", selector: "&\\..+" },
     { type: "rule", selector: "&__.+" },
     { type: "rule", selector: "." }
