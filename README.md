@@ -13,13 +13,13 @@ npm install stylelint --save-dev
 
 ### 2. CSS and SCSS stylelint configs
 ```
-npm install stylelint-config-standard-scss stylelint-config-recommended-scss --save-dev
+npm install stylelint-config-standard-scss --save-dev
 ```
 
 
 ### 3. Stylelint rules order
 ```
-npm install stylelint-order stylelint-config-rational-order --save-dev
+npm install stylelint-config-rational-order --save-dev
 ```
 
 
