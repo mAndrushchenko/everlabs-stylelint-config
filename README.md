@@ -209,12 +209,12 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { opacity: 0.5 }
 
 a { color: rgb(0 0 0 / 0.5) }
 
-// good
+// passes the test
 a { opacity: 50% }
 
 a { color: rgb(0 0 0 / 50%) }
@@ -235,13 +235,13 @@ a { color: rgb(0 0 0 / 50%) }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {} @media {}
 
 a {}
 @media {}
 
-// good
+// passes the test
 a {}
 
 @media {}
@@ -256,12 +256,12 @@ a {}
 
 
 ```scss
-// bad
+// doesn't pass the test
 @Media (min-width: 50em) {}
 
 @MEDIA (min-width: 50em) {}
 
-// good
+// passes the test
 @media (min-width: 50em) {}
 ```
 
@@ -274,12 +274,12 @@ a {}
 
 
 ```scss
-// bad
+// doesn't pass the test
 @media(min-width: 700px) {}
 
 @media  (min-width: 700px) {}
 
-// good
+// passes the test
 @media (min-width: 700px) {}
 ```
 
@@ -292,12 +292,12 @@ a {}
 
 
 ```scss
-// bad
+// doesn't pass the test
 @-webkit-keyframes anim { 0% { top: 0; } }
 
 @-ms-viewport { orientation: landscape; }
 
-// good
+// passes the test
 @keyframes anim { 0% { top: 0; } }
 
 @viewport { orientation: landscape; }
@@ -312,12 +312,12 @@ a {}
 
 
 ```scss
-// bad
+// doesn't pass the test
 @import url("x.css"); @import url("y.css");
 
 @import url("x.css"); a {}
 
-// good
+// passes the test
 @import url("x.css");
 @import url("y.css");
 
@@ -338,13 +338,13 @@ a {}
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   color: pink;
 
 }
 
-// good
+// passes the test
 a {
   color: pink;
 }
@@ -359,13 +359,13 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink; }b { color: red; }
 
 a { color: pink;
 } b { color: red; }
 
-// good
+// passes the test
 a { color: pink; }
 b { color: red; }
 ```
@@ -379,11 +379,11 @@ b { color: red; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   color: pink;}
 
-// good
+// passes the test
 a { color: pink; }
 
 a {
@@ -400,10 +400,10 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink;}
 
-// good
+// passes the test
 a { color: pink; }
 ```
 
@@ -416,11 +416,11 @@ a { color: pink; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a{color: pink;
 }
 
-// good
+// passes the test
 a { color: pink; }
 ```
 
@@ -433,10 +433,10 @@ a { color: pink; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {color: pink; }
 
-// good
+// passes the test
 a { color: pink; }
 ```
 
@@ -449,10 +449,10 @@ a { color: pink; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a{ color: pink; }
 
-// good
+// passes the test
 a { color: pink; }
 ```
 
@@ -465,10 +465,10 @@ a { color: pink; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: #FFF; }
 
-// good
+// passes the test
 a { color: #000; }
 
 a { color: #fff; }
@@ -483,12 +483,12 @@ a { color: #fff; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: #ffffff; }
 
 a { color: #ffffffaa; }
 
-// good
+// passes the test
 a { color: #fff; }
 
 a { color: #fffa; }
@@ -511,11 +511,11 @@ a { color: #a4a4a4; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {}
 /* comment */
 
-// good
+// passes the test
 a {}
 
 /* comment */
@@ -532,14 +532,14 @@ a {} /* comment */
 
 
 ```scss
-// bad
+// doesn't pass the test
 /*comment*/
 
 /*comment */
 
 /** comment**/
 
-// good
+// passes the test
 /* comment */
 
 /** comment **/
@@ -560,14 +560,14 @@ a {} /* comment */
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   top: 10px;
   --foo: pink;
   --bar: red;
 }
 
-// good
+// passes the test
 a {
   top: 10px;
 
@@ -590,13 +590,13 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 @custom-media fooBar (min-width: 30em);
 
 @custom-media foo_bar (min-width: 30em);
 
 
-// good
+// passes the test
 @custom-media foo-bar (min-width: 30em);
 ```
 
@@ -614,10 +614,10 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 :root { --foo_bar: 0; }
 
-// good
+// passes the test
 :root { --foo-bar: 0; }
 ```
 
@@ -630,12 +630,12 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink ! important; }
 
 a { color: pink! important; }
 
-// good
+// passes the test
 a { color: pink !important; }
 ```
 
@@ -648,12 +648,12 @@ a { color: pink !important; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink!important; }
 
 a { color: pink  ! important; }
 
-// good
+// passes the test
 a { color: pink !important; }
 ```
 
@@ -666,12 +666,12 @@ a { color: pink !important; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   color: pink; top: 0;
 }
 
-// good
+// passes the test
 a { color: pink; }
 
 a { color: pink; top: 0; }
@@ -691,10 +691,10 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink;top: 0; }
 
-// good
+// passes the test
 a { color: pink; top: 0; }
 
 a {
@@ -712,12 +712,12 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink ; }
 
 a { color: pink ; top: 0 ; }
 
-// good
+// passes the test
 a { color: pink; }
 
 a { color: pink; top: 0; }
@@ -732,13 +732,13 @@ a { color: pink; top: 0; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink; top: 3px; }
 
 a,
 b { color: pink; top: 3px; }
 
-// good
+// passes the test
 a { color: pink; }
 
 a,
@@ -760,14 +760,14 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color: pink }
 
 a { background: orange; color: pink }
 
 a { @include foo }
 
-// good
+// passes the test
 a { color: pink; }
 
 a { background: orange; color: pink; }
@@ -785,7 +785,7 @@ a { @include foo; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   margin-top: 1px;
   margin-right: 2px;
@@ -793,7 +793,7 @@ a {
   margin-left: 4px;
 }
 
-// good
+// passes the test
 a {
   margin: 1px 2px 3px 4px;
 }
@@ -809,13 +809,13 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   box-shadow: 0 0 0 1px #5b9dd9,
   0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
 
-// good
+// passes the test
 a {
   box-shadow:
     0 0 0 1px #5b9dd9,
@@ -837,12 +837,12 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   box-shadow:0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
 
-// good
+// passes the test
 a {
   box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
@@ -864,12 +864,12 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { color : pink }
 
 a { color :pink }
 
-// good
+// passes the test
 a { color: pink }
 ```
 
@@ -889,13 +889,13 @@ a { color: pink }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   --foo: pink;
   top: 5px;
 }
 
-// good
+// passes the test
 a {
   --foo: pink;
 
@@ -913,7 +913,7 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { font-family: Times New Roman, Times, serif; }
 
 a { font-family: MyFontVersion6, sake_case_font; }
@@ -922,7 +922,7 @@ a { font-family: 'Arial', sans-serif; }
 
 a { font: 1em Times New Roman, Times, serif; }
 
-// good
+// passes the test
 a { font-family: 'Times New Roman', Times, serif; }
 
 a { font-family: "MyFontVersion6", "sake_case_font"; }
@@ -942,11 +942,11 @@ a { font: 1em 'Times New Roman', Times, serif; }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { transform: translate(100%
 ,100%) }
 
-// good
+// passes the test
 a { transform: translate(100%,100%) }
 
 a { transform: translate(100% ,100%) }
@@ -967,12 +967,12 @@ a {
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { transform: translate(100%,100%) }
 
 a { transform: translate(100% ,100%) }
 
-// good
+// passes the test
 a { transform: translate(100%, 100%) }
 ```
 
@@ -986,12 +986,12 @@ a { transform: translate(100%, 100%) }
 
 
 ```scss
-// bad
+// doesn't pass the test
 a { transform: translate(100% , 100%) }
 
 a { transform: translate(100% ,100%) }
 
-// good
+// passes the test
 a { transform: translate(100%, 100%) }
 
 a { transform: translate(100%,100%) }
@@ -1006,7 +1006,7 @@ a { transform: translate(100%,100%) }
 ```
 
 ```scss
-// bad
+// doesn't pass the test
 a { 
   transform: 
     translate(
@@ -1016,7 +1016,7 @@ a {
     ) 
 }
 
-// good
+// passes the test
 a {
   transform:
     translate(
@@ -1035,7 +1035,7 @@ a {
 ```
 
 ```scss
-// bad
+// doesn't pass the test
 a {
   width: Calc(5% - 10em);
 }
@@ -1044,7 +1044,7 @@ a {
   width: cAlC(5% - 10em);
 }
 
-// good
+// passes the test
 a {
   width: calc(5% - 10em);
 }
@@ -1059,11 +1059,11 @@ a {
 ```
 
 ```scss
-// bad
+// doesn't pass the test
 a { transform: translate(1,
     1) }
 
-// good
+// passes the test
 a { transform: translate(1, 1) }
 
 a { transform: translate( 1, 1 ) }
@@ -1091,12 +1091,12 @@ a {
 ```
 
 ```scss
-// bad
+// doesn't pass the test
 a { transform: translate( 1, 1 ) }
 
 a { transform: translate(1, 1 ) }
 
-// good
+// passes the test
 a { transform: translate(1, 1) }
 ```
 
