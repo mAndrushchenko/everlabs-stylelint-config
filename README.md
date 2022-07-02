@@ -149,3 +149,65 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard/blob/main/index.js)
 - [stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss)
 
+
+## Rules
+- [alpha-value-notation](#alpha-value-notation)
+- [at-rule-empty-line-before](#at-rule-empty-line-before)
+
+
+## Examples
+
+
+### [alpha-value-notation](https://stylelint.io/user-guide/rules/list/alpha-value-notation/#percentage) (autofixable)
+
+#### Config:
+```yaml
+'alpha-value-notation': [
+  'percentage',
+  {
+    exceptProperties: ['opacity'],
+  },
+]
+```
+
+#### Example:
+
+```scss
+// bad
+a { opacity: 0.5 }
+
+a { color: rgb(0 0 0 / 0.5) }
+
+// good
+a { opacity: 50% }
+
+a { color: rgb(0 0 0 / 50%) }
+```
+
+### [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/list/at-rule-empty-line-before#always) (autofixable)
+
+#### Config:
+```yaml
+'at-rule-empty-line-before': [
+  'always',
+  {
+    except: ['blockless-after-same-name-blockless', 'first-nested'],
+    ignore: ['after-comment'],
+  },
+],
+```
+
+#### Example:
+
+```scss
+// bad
+a {} @media {}
+
+a {}
+@media {}
+
+// good
+a {}
+
+@media {}
+```
