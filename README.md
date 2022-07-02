@@ -151,14 +151,14 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 
 
 ## Rules
-- [alpha-value-notation](#alpha-value-notation)
-- [at-rule-empty-line-before](#at-rule-empty-line-before)
+- [alpha-value-notation](#alpha-value-notation) (autofixable)
+- [at-rule-empty-line-before](#at-rule-empty-line-before) (autofixable)
 
 
 ## Examples
 
 
-### [alpha-value-notation](https://stylelint.io/user-guide/rules/list/alpha-value-notation/#percentage) (autofixable)
+### [alpha-value-notation](https://stylelint.io/user-guide/rules/list/alpha-value-notation/#percentage)
 
 #### Config:
 ```yaml
@@ -184,7 +184,7 @@ a { opacity: 50% }
 a { color: rgb(0 0 0 / 50%) }
 ```
 
-### [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/list/at-rule-empty-line-before#always) (autofixable)
+### [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/list/at-rule-empty-line-before#always)
 
 #### Config:
 ```yaml
