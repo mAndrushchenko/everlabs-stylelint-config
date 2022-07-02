@@ -153,6 +153,29 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 ## Rules
 - [alpha-value-notation](#alpha-value-notation) (autofixable)
 - [at-rule-empty-line-before](#at-rule-empty-line-before) (autofixable)
+- [at-rule-name-case](#at-rule-name-case) (autofixable)
+- [at-rule-name-space-after](#at-rule-name-space-after) (autofixable)
+- [at-rule-no-vendor-prefix](#at-rule-no-vendor-prefix) (autofixable)
+- [at-rule-semicolon-newline-after](#at-rule-semicolon-newline-after) (autofixable)
+- [block-closing-brace-empty-line-before](#block-closing-brace-empty-line-before) (autofixable)
+- [block-closing-brace-newline-after](#block-closing-brace-newline-after) (autofixable)
+- [block-closing-brace-newline-before](#block-closing-brace-newline-before) (autofixable)
+- [block-closing-brace-space-before](#block-closing-brace-space-before) (autofixable)
+- [block-opening-brace-newline-after](#block-opening-brace-newline-after) (autofixable)
+- [block-opening-brace-space-after](#block-opening-brace-space-after) (autofixable)
+- [block-opening-brace-space-before](#block-opening-brace-space-before) (autofixable)
+- [color-hex-case](#color-hex-case) (autofixable)
+- [color-hex-length](#color-hex-length) (autofixable)
+- [comment-empty-line-before](#comment-empty-line-before) (autofixable)
+- [comment-whitespace-inside](#comment-whitespace-inside) (autofixable)
+- [custom-property-empty-line-before](#custom-property-empty-line-before) (autofixable)
+- [custom-media-pattern](#custom-media-pattern)
+- [custom-property-pattern](#custom-property-pattern)
+- [declaration-bang-space-before](#declaration-bang-space-after) (autofixable)
+- [declaration-block-semicolon-newline-after](#declaration-block-semicolon-newline-after) (autofixable)
+- [declaration-block-semicolon-space-after](#declaration-block-semicolon-space-after) (autofixable)
+- [declaration-block-semicolon-space-before](#declaration-block-semicolon-space-before) (autofixable)
+- [declaration-block-single-line-max-declarations](#declaration-block-single-line-max-declarations)
 
 
 ## Examples
@@ -184,6 +207,7 @@ a { opacity: 50% }
 a { color: rgb(0 0 0 / 50%) }
 ```
 
+
 ### [at-rule-empty-line-before](https://stylelint.io/user-guide/rules/list/at-rule-empty-line-before#always)
 
 #### Config:
@@ -211,3 +235,558 @@ a {}
 
 @media {}
 ```
+
+
+### [at-rule-name-case](https://stylelint.io/user-guide/rules/list/at-rule-name-case#lower)
+
+#### Config:
+```yaml
+'at-rule-name-case': 'lower'
+```
+
+#### Example:
+
+```scss
+// bad
+@Media (min-width: 50em) {}
+
+@MEDIA (min-width: 50em) {}
+
+// good
+@media (min-width: 50em) {}
+```
+
+
+### [at-rule-name-space-after](https://stylelint.io/user-guide/rules/list/at-rule-name-space-after/#always-single-line)
+
+#### Config:
+```yaml
+'at-rule-name-space-after': 'always-single-line'
+```
+
+#### Example:
+
+```scss
+// bad
+@media(min-width: 700px) {}
+
+@media  (min-width: 700px) {}
+
+// good
+@media (min-width: 700px) {}
+```
+
+
+### [at-rule-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/at-rule-no-vendor-prefix#true)
+
+#### Config:
+```yaml
+'at-rule-no-vendor-prefix': true
+```
+
+#### Example:
+
+```scss
+// bad
+@-webkit-keyframes anim { 0% { top: 0; } }
+
+@-ms-viewport { orientation: landscape; }
+
+// good
+@keyframes anim { 0% { top: 0; } }
+
+@viewport { orientation: landscape; }
+```
+
+
+### [at-rule-semicolon-newline-after](https://stylelint.io/user-guide/rules/list/at-rule-semicolon-newline-after#always)
+
+#### Config:
+```yaml
+'at-rule-semicolon-newline-after': 'always',
+```
+
+#### Example:
+
+```scss
+// bad
+@import url("x.css"); @import url("y.css");
+
+@import url("x.css"); a {}
+
+// good
+@import url("x.css");
+@import url("y.css");
+
+@import url("x.css"); /* end-of-line comment */
+a {}
+
+@import url("x.css");
+
+a {}
+```
+
+
+### [block-closing-brace-empty-line-before](https://stylelint.io/user-guide/rules/list/block-closing-brace-empty-line-before#never)
+
+#### Config:
+```yaml
+'block-closing-brace-empty-line-before': 'never'
+```
+
+#### Example:
+
+```scss
+// bad
+a {
+  color: pink;
+
+}
+
+// good
+a {
+  color: pink;
+}
+```
+
+
+### [block-closing-brace-newline-after](https://stylelint.io/user-guide/rules/list/block-closing-brace-newline-after#always)
+
+#### Config:
+```yaml
+'block-closing-brace-newline-after': 'always'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink; }b { color: red; }
+
+a { color: pink;
+} b { color: red; }
+
+// good
+a { color: pink; }
+b { color: red; }
+```
+
+
+### [block-closing-brace-newline-before](https://stylelint.io/user-guide/rules/list/block-closing-brace-newline-before/#always-multi-line)
+
+#### Config:
+```yaml
+'block-closing-brace-newline-before': 'always-multi-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a {
+  color: pink;}
+
+// good
+a { color: pink; }
+
+a {
+  color: pink;
+}
+```
+
+
+### [block-closing-brace-space-before](https://stylelint.io/user-guide/rules/list/block-closing-brace-space-before#always-single-line)
+
+#### Config:
+```yaml
+'block-closing-brace-space-before': 'always-single-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink;}
+
+// good
+a { color: pink; }
+```
+
+
+### [block-opening-brace-newline-after](https://stylelint.io/user-guide/rules/list/block-opening-brace-newline-after#always-multi-line)
+
+#### Config:
+```yaml
+'block-opening-brace-newline-after': 'always-multi-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a{color: pink;
+}
+
+// good
+a { color: pink; }
+```
+
+
+### [block-opening-brace-space-after](https://stylelint.io/user-guide/rules/list/block-opening-brace-space-after#always-single-line)
+
+#### Config:
+```yaml
+'block-opening-brace-space-after': 'always-single-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a {color: pink; }
+
+// good
+a { color: pink; }
+```
+
+
+### [block-opening-brace-space-before](https://stylelint.io/user-guide/rules/list/block-opening-brace-space-before#always)
+
+#### Config:
+```yaml
+'block-opening-brace-space-before': 'always'
+```
+
+#### Example:
+
+```scss
+// bad
+a{ color: pink; }
+
+// good
+a { color: pink; }
+```
+
+
+### [color-hex-case](https://stylelint.io/user-guide/rules/list/color-hex-case#lower)
+
+#### Config:
+```yaml
+'color-hex-case': 'lower'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: #FFF; }
+
+// good
+a { color: #000; }
+
+a { color: #fff; }
+```
+
+
+### [color-hex-length](https://stylelint.io/user-guide/rules/list/color-hex-length#short)
+
+#### Config:
+```yaml
+'color-hex-length': 'short'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: #ffffff; }
+
+a { color: #ffffffaa; }
+
+// good
+a { color: #fff; }
+
+a { color: #fffa; }
+
+a { color: #a4a4a4; }
+```
+
+
+### [comment-empty-line-before](https://stylelint.io/user-guide/rules/list/comment-empty-line-before#always)
+
+#### Config:
+```yaml
+'comment-empty-line-before': [
+  'always',
+  {
+    except: ['first-nested'],
+    ignore: ['stylelint-commands'],
+  },
+]
+```
+
+#### Example:
+
+```scss
+// bad
+a {}
+/* comment */
+
+// good
+a {}
+
+/* comment */
+
+a {} /* comment */
+```
+
+
+### [comment-whitespace-inside](https://stylelint.io/user-guide/rules/list/comment-whitespace-inside#always)
+
+#### Config:
+```yaml
+'comment-whitespace-inside': 'always'
+```
+
+#### Example:
+
+```scss
+// bad
+/*comment*/
+
+/*comment */
+
+/** comment**/
+
+// good
+/* comment */
+
+/** comment **/
+```
+
+
+### [custom-property-empty-line-before](https://stylelint.io/user-guide/rules/list/custom-property-empty-line-before#always)
+
+#### Config:
+```yaml
+'custom-property-empty-line-before': [
+  'always',
+  {
+    except: ['after-custom-property', 'first-nested'],
+    ignore: ['after-comment', 'inside-single-line-block'],
+  },
+]
+```
+
+#### Example:
+
+```scss
+// bad
+a {
+  top: 10px;
+  --foo: pink;
+  --bar: red;
+}
+
+// good
+a {
+  top: 10px;
+
+  --foo: pink;
+  --bar: red;
+}
+```
+
+
+### [custom-media-pattern](https://stylelint.io/user-guide/rules/list/custom-media-pattern)
+
+#### Config:
+```yaml
+'custom-media-pattern': [
+  '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected custom media query name to be kebab-case',
+  },
+]
+```
+
+#### Example:
+
+```scss
+// bad
+@custom-media fooBar (min-width: 30em);
+
+@custom-media foo_bar (min-width: 30em);
+
+
+// good
+@custom-media foo-bar (min-width: 30em);
+```
+
+
+### [custom-property-pattern](https://stylelint.io/user-guide/rules/list/custom-property-pattern/)
+
+#### Config:
+```yaml
+'custom-property-pattern': [
+  '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected custom property name to be kebab-case',
+  },
+],
+```
+
+#### Example:
+
+```scss
+// bad
+:root { --foo_bar: 0; }
+
+// good
+:root { --foo-bar: 0; }
+```
+
+
+### [declaration-bang-space-after](https://stylelint.io/user-guide/rules/list/declaration-bang-space-after#never)
+
+#### Config:
+```yaml
+'declaration-bang-space-after': 'never'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink ! important; }
+
+a { color: pink! important; }
+
+// good
+a { color: pink !important; }
+```
+
+
+### [declaration-bang-space-before](https://stylelint.io/user-guide/rules/list/declaration-bang-space-before#always)
+
+#### Config:
+```yaml
+'declaration-bang-space-before': 'always'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink!important; }
+
+a { color: pink  ! important; }
+
+// good
+a { color: pink !important; }
+```
+
+
+### [declaration-block-semicolon-newline-after](https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-newline-after#always-multi-line)
+
+#### Config:
+```yaml
+'declaration-block-semicolon-newline-after': 'always-multi-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a {
+  color: pink; top: 0;
+}
+
+// good
+a { color: pink; }
+
+a { color: pink; top: 0; }
+
+a {
+  color: pink;
+  top: 0;
+}
+```
+
+
+### [declaration-block-semicolon-space-after](https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-space-after#always-single-line)
+
+#### Config:
+```yaml
+'declaration-block-semicolon-space-after': 'always-single-line'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink;top: 0; }
+
+// good
+a { color: pink; top: 0; }
+
+a {
+  color: pink;
+  top: 0;
+}
+```
+
+
+### [declaration-block-semicolon-space-before](https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-space-before#never)
+
+#### Config:
+```yaml
+'declaration-block-semicolon-space-before': 'never'
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink ; }
+
+a { color: pink ; top: 0 ; }
+
+// good
+a { color: pink; }
+
+a { color: pink; top: 0; }
+```
+
+
+### [declaration-block-single-line-max-declarations](https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-space-before#never)
+
+#### Config:
+```yaml
+'declaration-block-single-line-max-declarations': 1
+```
+
+#### Example:
+
+```scss
+// bad
+a { color: pink; top: 3px; }
+
+a,
+b { color: pink; top: 3px; }
+
+// good
+a { color: pink; }
+
+a,
+b { color: pink; }
+
+a {
+  color: pink;
+  top: 3px;
+}
+```
+
+
+
+# END_OF_THE_FILE
