@@ -191,6 +191,17 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [function-name-case](#function-name-case) (autofixable)
 - [function-parentheses-newline-inside](#function-parentheses-newline-inside) (autofixable)
 - [function-parentheses-space-inside](#function-parentheses-space-inside) (autofixable)
+- [function-url-quotes](#function-url-quotes)
+- [function-whitespace-after](#function-whitespace-after) (autofixable)
+- [hue-degree-notation](#hue-degree-notation) (autofixable)
+- [import-notation](#import-notation) (autofixable)
+- [indentation](#indentation) (autofixable)
+- [keyframes-name-pattern](#keyframes-name-pattern)
+- [length-zero-no-unit](#length-zero-no-unit) (autofixable)
+- [max-empty-lines](#max-empty-lines) (autofixable)
+- [max-line-length](#max-line-length)
+- [media-feature-colon-space-after](#media-feature-colon-space-after) (autofixable)
+- [media-feature-colon-space-before](#media-feature-colon-space-before) (autofixable)
 
 
 ## Examples
@@ -1100,6 +1111,241 @@ a { transform: translate(1, 1 ) }
 a { transform: translate(1, 1) }
 ```
 
+
+### [function-url-quotes](https://stylelint.io/user-guide/rules/list/function-url-quotes#always)
+
+
+```yaml
+'function-url-quotes': 'always'
+```
+
+```scss
+// doesn't pass the test
+a { background: url(x.jpg); }
+
+@import url(foo.css);
+
+@document domain(http://www.w3.org/);
+
+// passes the test
+a { background: url('x.jpg'); }
+
+@import url("foo.css");
+
+@document domain('http://www.w3.org/');
+```
+
+
+### [function-whitespace-after](https://stylelint.io/user-guide/rules/list/function-whitespace-after#always)
+
+
+```yaml
+'function-whitespace-after': 'always'
+```
+
+```scss
+// doesn't pass the test
+a { transform: translate(1, 1)scale(3); }
+
+// passes the test
+a { transform: translate(1, 1) scale(3); }
+```
+
+
+### [function-whitespace-after](https://stylelint.io/user-guide/rules/list/hue-degree-notation#angle)
+
+
+```yaml
+'hue-degree-notation': 'angle'
+```
+
+```scss
+// doesn't pass the test
+a { color: hsl(198 28% 50%) }
+
+a { color: lch(56.29% 19.86 10 / 15%) }
+
+// passes the test
+a { color: hsl(198deg 28% 50%) }
+
+a { color: lch(56.29% 19.86 10deg / 15%) }
+```
+
+
+### [import-notation](https://stylelint.io/user-guide/rules/list/import-notation#string)
+
+
+```yaml
+'import-notation': 'string'
+```
+
+```scss
+// doesn't pass the test
+@import url(foo.css);
+
+@import url('foo.css');
+
+// passes the test
+@import 'foo.css';
+
+@import "foo.css";
+```
+
+
+### [indentation](https://stylelint.io/user-guide/rules/list/indentation#2)
+
+
+```yaml
+indentation: 2
+```
+
+```scss
+// doesn't pass the test
+@media print {
+a {
+background-position: top left;
+}
+}
+
+@media print {
+  a {
+  background-position: top left;
+  }
+}
+
+// passes the test
+@media print {
+  a {
+    background-position: top left;
+  }
+}
+```
+
+
+### [keyframes-name-pattern](https://stylelint.io/user-guide/rules/list/keyframes-name-pattern#options)
+
+
+```yaml
+'keyframes-name-pattern': [
+  '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected keyframe name to be kebab-case',
+  }
+]
+```
+
+```scss
+// doesn't pass the test
+@keyframes fooBaz {}
+
+@keyframes foo_baz {}
+
+// passes the test
+@keyframes foo-baz {}
+```
+
+
+### [length-zero-no-unit](https://stylelint.io/user-guide/rules/list/length-zero-no-unit#true)
+
+
+```yaml
+'length-zero-no-unit': true
+```
+
+```scss
+// doesn't pass the test
+a { top: 0px }
+
+a { top: 0.000em }
+
+// passes the test
+a { top: 0 } /* no unit */
+
+a { transition-delay: 0s; } /* dimension */
+```
+
+
+### [max-empty-lines](https://stylelint.io/user-guide/rules/list/max-empty-lines#options)
+
+
+```yaml
+'max-empty-lines': 1
+```
+
+```scss
+// doesn't pass the test
+a {}
+
+
+b {}
+
+// passes the test
+a {}
+
+b {}
+```
+
+
+### [max-line-length](https://stylelint.io/user-guide/rules/list/max-line-length#options)
+
+
+```yaml
+'max-line-length': 120
+```
+
+```scss
+// doesn't pass the test
+a { color: pink; background: orange; margin-left: 10px; margin-top: 24px; padding-left: 20px; padding-right: 20px}
+
+// passes the test
+a {
+  color: pink;
+  background: orange;
+  margin-left: 10px;
+  margin-top: 24px;
+  padding-left: 20px;
+  padding-right: 20px
+}
+
+```
+
+
+### [media-feature-colon-space-after](https://stylelint.io/user-guide/rules/list/media-feature-colon-space-after#always)
+
+
+```yaml
+'media-feature-colon-space-after': 'always'
+```
+
+```scss
+// doesn't pass the test
+@media (max-width:600px) {}
+
+@media (max-width :600px) {}
+
+// passes the test
+@media (max-width: 600px) {}
+
+```
+
+
+### [media-feature-colon-space-before](https://stylelint.io/user-guide/rules/list/media-feature-colon-space-before#never)
+
+
+```yaml
+'media-feature-colon-space-before': 'never'
+```
+
+```scss
+// doesn't pass the test
+@media (max-width :600px) {}
+
+@media (max-width : 600px) {}
+
+// passes the test
+@media (max-width: 600px) {}
+
+```
 
 
 # END_OF_THE_FILE
