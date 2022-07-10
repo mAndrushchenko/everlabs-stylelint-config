@@ -40,7 +40,7 @@ rules:
   ]
   selector-pseudo-element-colon-notation: null
   selector-class-pattern: ["^(--[a-z][a-z0-9]*)(-[a-z0-9]+)*$|^([a-z][a-z0-9]*)(((-)|(__))[a-z0-9]+)*$", {
-    message: "Expected format: .class-name | .--class-modification | .block-class__element-class (selector-class-pattern)",
+    message: "Expected format: .foo-bar | .--foo-bar | .foo-bar__baz (selector-class-pattern)",
     resolveNestedSelectors: true
   }]
   value-no-vendor-prefix: [true, { ignoreValues: ["box"] }]
