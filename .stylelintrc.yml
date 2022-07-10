@@ -5,7 +5,7 @@
 
 # Rules order config example https://github.com/maxdenaro/maxgraph-youtube-source/blob/master/stylelint/.stylelintrc
 
-extends: ["stylelint-config-standard-scss", "stylelint-config-rational-order"]
+extends: [ "stylelint-config-standard-scss", "stylelint-config-rational-order" ]
 
 ignoreFiles: [
   # Exclude all min.scss files
@@ -18,9 +18,7 @@ ignoreFiles: [
 rules:
   color-function-notation: null
   color-named: "never"
-  max-nesting-depth: [4, { ignore: ["pseudo-classes"] }]
-  no-duplicate-selectors: null
-  no-unknown-animations: true
+  max-nesting-depth: [ 4, { ignore: [ "pseudo-classes" ] } ]
   property-no-vendor-prefix: null
   order/order: [
     "custom-properties",
@@ -33,14 +31,45 @@ rules:
     { type: "rule", selector: "&:first-child" },
     { type: "rule", selector: "&:last-child" },
 
-#    Next 3 rules related to class orders and need to test in the project
+    #    Next 3 rules related to class orders and need to test in the project
     { type: "rule", selector: "&\\..+" },
     { type: "rule", selector: "&__.+" },
     { type: "rule", selector: "." }
   ]
   selector-pseudo-element-colon-notation: null
-  selector-class-pattern: ["^(--[a-z][a-z0-9]*)(-[a-z0-9]+)*$|^([a-z][a-z0-9]*)(((-)|(__))[a-z0-9]+)*$", {
+  selector-class-pattern: [ "^(--[a-z][a-z0-9]*)(-[a-z0-9]+)*$|^([a-z][a-z0-9]*)(((-)|(__))[a-z0-9]+)*$", {
     message: "Expected format: .foo-bar | .--foo-bar | .foo-bar__baz (selector-class-pattern)",
     resolveNestedSelectors: true
-  }]
-  value-no-vendor-prefix: [true, { ignoreValues: ["box"] }]
+  } ]
+  value-no-vendor-prefix: [ true, { ignoreValues: [ "box" ] } ]
+  scss/declaration-nested-properties-no-divided-groups: null
+  scss/function-quote-no-quoted-strings-inside: null
+  scss/function-unquote-no-unquoted-strings-inside: null
+  scss/no-global-function-names: null
+  scss/at-else-closing-brace-newline-after: null
+  scss/at-else-closing-brace-space-after: null
+  scss/at-else-empty-line-before: null
+  scss/at-function-pattern: [ '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$', {
+    message: 'Expected function name to be kebab-case (scss/at-function-pattern)'
+  } ]
+  scss/at-if-closing-brace-newline-after: null
+  scss/at-if-closing-brace-space-after: null
+  scss/at-mixin-pattern: [
+    '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+    {
+      message: 'Expected mixin name to be kebab-case (scss/at-mixin-pattern)',
+    }
+  ]
+  scss/at-rule-conditional-no-parentheses: null
+  scss/dollar-variable-pattern: [
+    '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+    {
+      message: 'Expected variable to be kebab-case (scss/dollar-variable-pattern)'
+    }
+  ]
+  'scss/percent-placeholder-pattern': [
+    '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+    {
+      message: 'Expected placeholder to be kebab-case (percent-placeholder-pattern)'
+    }
+  ]
