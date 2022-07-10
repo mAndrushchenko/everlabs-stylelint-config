@@ -138,12 +138,38 @@ More about ignoring rules in the files you can find [here](https://stylelint.io/
 
 
 ## Avoiding errors
-Current config includes [``stylelint-config-recommended``](https://stylelint.io/user-guide/rules/list/#avoid-errors). These rules **are not autofixable**. It turns on all the Stylelint rules that help you [avoid errors](https://stylelint.io/user-guide/rules/list/#avoid-errors).
-The config **doesn't include** next rules:
+Current config includes [``stylelint-config-recommended``](https://stylelint.io/user-guide/rules/list/#avoid-errors). These rules **are not autofixable**. It turns on all the Stylelint rules that help you [avoid errors](https://stylelint.io/user-guide/rules/list/#avoid-errors):
 
 - [at-rule-no-unknown](https://stylelint.io/user-guide/rules/list/at-rule-no-unknown)
+- [block-no-empty](https://stylelint.io/user-guide/rules/list/block-no-empty)
+- [color-no-invalid-hex](https://stylelint.io/user-guide/rules/list/color-no-invalid-hex)
 - [comment-no-empty](https://stylelint.io/user-guide/rules/list/comment-no-empty)
-- [function-no-unknown](https://stylelint.io/user-guide/rules/list/function-no-unknown)
+- [custom-property-no-missing-var-function](https://stylelint.io/user-guide/rules/list/custom-property-no-missing-var-function)
+- [declaration-block-no-duplicate-custom-properties](https://stylelint.io/user-guide/rules/list/declaration-block-no-duplicate-custom-properties)
+- [declaration-block-no-duplicate-properties](https://stylelint.io/user-guide/rules/list/declaration-block-no-duplicate-properties#ignore-consecutive-duplicates-with-different-values)
+- [declaration-block-no-shorthand-property-overrides](https://stylelint.io/user-guide/rules/list/declaration-block-no-shorthand-property-overrides)
+- [font-family-no-duplicate-names](https://stylelint.io/user-guide/rules/list/font-family-no-duplicate-names)
+- [font-family-no-missing-generic-family-keyword](https://stylelint.io/user-guide/rules/list/font-family-no-missing-generic-family-keyword)
+- [function-calc-no-unspaced-operator](https://stylelint.io/user-guide/rules/list/function-calc-no-unspaced-operator)
+- [function-linear-gradient-no-nonstandard-direction](https://stylelint.io/user-guide/rules/list/function-linear-gradient-no-nonstandard-direction)
+- [keyframe-block-no-duplicate-selectors](https://stylelint.io/user-guide/rules/list/keyframe-block-no-duplicate-selectors)
+- [keyframe-declaration-no-important](https://stylelint.io/user-guide/rules/list/keyframe-declaration-no-important)
+- [media-feature-name-no-unknown](https://stylelint.io/user-guide/rules/list/media-feature-name-no-unknown)
+- [named-grid-areas-no-invalid](https://stylelint.io/user-guide/rules/list/named-grid-areas-no-invalid)
+- [no-descending-specificity](https://stylelint.io/user-guide/rules/list/no-descending-specificity)
+- [no-duplicate-at-import-rules](https://stylelint.io/user-guide/rules/list/no-duplicate-at-import-rules)
+- [no-duplicate-selectors](https://stylelint.io/user-guide/rules/list/no-duplicate-selectors)
+- [no-empty-source](https://stylelint.io/user-guide/rules/list/no-empty-source)
+- [no-extra-semicolons](https://stylelint.io/user-guide/rules/list/no-extra-semicolons)
+- [no-invalid-double-slash-comments](https://stylelint.io/user-guide/rules/list/no-invalid-double-slash-comments)
+- [no-invalid-position-at-import-rule](https://stylelint.io/user-guide/rules/list/no-invalid-position-at-import-rule)
+- [no-irregular-whitespace](https://stylelint.io/user-guide/rules/list/no-irregular-whitespace)
+- [property-no-unknown](https://stylelint.io/user-guide/rules/list/property-no-unknown)
+- [selector-pseudo-class-no-unknown](https://stylelint.io/user-guide/rules/list/selector-pseudo-class-no-unknown)
+- [selector-pseudo-element-no-unknown](https://stylelint.io/user-guide/rules/list/selector-pseudo-element-no-unknown)
+- [selector-type-no-unknown](https://stylelint.io/user-guide/rules/list/selector-type-no-unknown#optional-secondary-options)
+- [string-no-newline](https://stylelint.io/user-guide/rules/list/string-no-newline)
+- [unit-no-unknown](https://stylelint.io/user-guide/rules/list/unit-no-unknown)
 
 
 ## CSS rules
