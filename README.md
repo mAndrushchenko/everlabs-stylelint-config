@@ -202,6 +202,50 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [max-line-length](#max-line-length)
 - [media-feature-colon-space-after](#media-feature-colon-space-after) (autofixable)
 - [media-feature-colon-space-before](#media-feature-colon-space-before) (autofixable)
+- [media-feature-name-case](#media-feature-name-case) (autofixable)
+- [media-feature-name-no-vendor-prefix](#media-feature-name-no-vendor-prefix) (autofixable)
+- [media-feature-parentheses-space-inside](#media-feature-parentheses-space-inside) (autofixable)
+- [media-feature-range-operator-space-after](#media-feature-range-operator-space-after) (autofixable)
+- [media-feature-range-operator-space-before](#media-feature-range-operator-space-before) (autofixable)
+- [media-query-list-comma-newline-after](#media-query-list-comma-newline-after) (autofixable)
+- [media-query-list-comma-space-after](#media-query-list-comma-space-after) (autofixable)
+- [media-query-list-comma-space-before](#media-query-list-comma-space-before) (autofixable)
+- [no-empty-first-line](#no-empty-first-line) (autofixable)
+- [no-eol-whitespace](#no-eol-whitespace) (autofixable)
+- [no-missing-end-of-source-newline](#no-missing-end-of-source-newline) (autofixable)
+- [number-leading-zero](#number-leading-zero) (autofixable)
+- [number-max-precision](#number-max-precision)
+- [number-no-trailing-zeros](#number-no-trailing-zeros) (autofixable)
+- [property-case](#property-case) (autofixable)
+- [property-no-vendor-prefix](#property-no-vendor-prefix) (autofixable)
+- [rule-empty-line-before](#rule-empty-line-before) (autofixable)
+- [selector-attribute-brackets-space-inside](#selector-attribute-brackets-space-inside) (autofixable)
+- [selector-attribute-operator-space-after](#selector-attribute-operator-space-after) (autofixable)
+- [selector-attribute-operator-space-before](#selector-attribute-operator-space-before) (autofixable)
+- [selector-attribute-quotes](#selector-attribute-quotes)
+- [selector-class-pattern](#selector-class-pattern)
+- [selector-combinator-space-after](#selector-combinator-space-after) (autofixable)
+- [selector-combinator-space-before](#selector-combinator-space-before) (autofixable)
+- [selector-descendant-combinator-no-non-space](#selector-descendant-combinator-no-non-space) (autofixable)
+- [selector-id-pattern](#selector-id-pattern)
+- [selector-list-comma-newline-after](#selector-list-comma-newline-after) (autofixable)
+- [selector-list-comma-space-before](#selector-list-comma-space-before) (autofixable)
+- [selector-max-empty-lines](#selector-max-empty-lines) (autofixable)
+- [selector-no-vendor-prefix](#selector-no-vendor-prefix) (autofixable)
+- [selector-not-notation](#selector-not-notation) (autofixable)
+- [selector-pseudo-class-case](#selector-pseudo-class-case) (autofixable)
+- [selector-pseudo-class-parentheses-space-inside](#selector-pseudo-class-parentheses-space-inside) (autofixable)
+- [selector-pseudo-element-case](#selector-pseudo-element-case) (autofixable)
+- [selector-type-case](#selector-type-case) (autofixable)
+- [shorthand-property-no-redundant-values](#shorthand-property-no-redundant-values) (autofixable)
+- [string-quotes](#string-quotes) (autofixable)
+- [unit-case](#unit-case) (autofixable)
+- [value-keyword-case](#value-keyword-case) (autofixable)
+- [value-list-comma-newline-after](#value-list-comma-newline-after) (autofixable)
+- [value-list-comma-space-after](#value-list-comma-space-after) (autofixable)
+- [value-list-comma-space-before](#value-list-comma-space-before) (autofixable)
+- [value-list-max-empty-lines](#value-list-max-empty-lines) (autofixable)
+- [value-no-vendor-prefix](#value-no-vendor-prefix) (autofixable)
 
 
 ## Examples
@@ -1306,7 +1350,6 @@ a {
   padding-left: 20px;
   padding-right: 20px
 }
-
 ```
 
 
@@ -1325,7 +1368,6 @@ a {
 
 // passes the test
 @media (max-width: 600px) {}
-
 ```
 
 
@@ -1344,7 +1386,839 @@ a {
 
 // passes the test
 @media (max-width: 600px) {}
+```
 
+### [media-feature-name-case](https://stylelint.io/user-guide/rules/list/media-feature-name-case#lower)
+
+
+```yaml
+'media-feature-name-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+@media (MIN-WIDTH: 700px) {}
+
+@media (min-width: 700px) and (ORIENTATION: landscape) {}
+
+// passes the test
+@media (min-width: 700px) {}
+
+@media (min-width: 700px) and (orientation: landscape) {}
+```
+
+
+### [media-feature-name-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/media-feature-name-no-vendor-prefix#true)
+
+
+```yaml
+'media-feature-name-no-vendor-prefix': true
+```
+
+```scss
+// doesn't pass the test
+@media (-webkit-min-device-pixel-ratio: 1) {}
+
+// passes the test
+@media (min-resolution: 96dpi) {}
+```
+
+
+### [media-feature-parentheses-space-inside](https://stylelint.io/user-guide/rules/list/media-feature-parentheses-space-inside#never)
+
+
+```yaml
+'media-feature-parentheses-space-inside': 'never'
+```
+
+```scss
+// doesn't pass the test
+@media ( max-width: 300px ) {}
+
+@media ( max-width: 300px) {}
+
+// passes the test
+@media (max-width: 300px) {}
+```
+
+
+### [media-feature-range-operator-space-after](https://stylelint.io/user-guide/rules/list/media-feature-range-operator-space-after#always)
+
+
+```yaml
+'media-feature-range-operator-space-after': 'always'
+```
+
+```scss
+// doesn't pass the test
+@media (width>=600px) {}
+
+@media (width >=600px) {}
+
+// passes the test
+@media (width >= 600px) {}
+```
+
+
+### [media-feature-range-operator-space-before](https://stylelint.io/user-guide/rules/list/media-feature-range-operator-space-before#always)
+
+
+```yaml
+'media-feature-range-operator-space-before': 'always'
+```
+
+```scss
+// doesn't pass the test
+@media (width>=600px) {}
+
+@media (width>= 600px) {}
+
+// passes the test
+@media (width >= 600px) {}
+```
+
+
+### [media-query-list-comma-newline-after](https://stylelint.io/user-guide/rules/list/media-query-list-comma-newline-after#always-multi-line)
+
+
+```yaml
+'media-query-list-comma-newline-after': 'always-multi-line'
+```
+
+```scss
+// doesn't pass the test
+@media screen and (color)
+, projection and (color) {}
+
+// passes the test
+@media screen and (color), projection and (color) {}
+
+@media screen and (color),
+projection and (color) {}
+```
+
+
+### [media-query-list-comma-space-after](https://stylelint.io/user-guide/rules/list/media-query-list-comma-space-after#always-single-line)
+
+
+```yaml
+'media-query-list-comma-space-after': 'always-single-line'
+```
+
+```scss
+// doesn't pass the test
+@media screen and (color),projection and (color) {}
+
+// passes the test
+@media screen and (color), projection and (color) {}
+```
+
+
+### [media-query-list-comma-space-before](https://stylelint.io/user-guide/rules/list/media-query-list-comma-space-before#never)
+
+
+```yaml
+'media-query-list-comma-space-before': 'never'
+```
+
+```scss
+// doesn't pass the test
+@media screen and (color) ,projection and (color) {}
+
+// passes the test
+@media screen and (color), projection and (color) {}
+```
+
+
+### [no-empty-first-line](https://stylelint.io/user-guide/rules/list/no-empty-first-line#true)
+
+
+```yaml
+'no-empty-first-line': true
+```
+
+```scss
+// doesn't pass the test
+\n
+a { color: pink; }
+
+// passes the test
+a { color: pink; }
+```
+
+
+### [no-eol-whitespace](https://stylelint.io/user-guide/rules/list/no-eol-whitespace#true)
+
+
+```yaml
+'no-eol-whitespace': true
+```
+
+```scss
+// doesn't pass the test
+a { color: pink; }·
+
+a { color: pink; }····
+
+// passes the test
+a { color: pink; }
+```
+
+
+### [no-missing-end-of-source-newline](https://stylelint.io/user-guide/rules/list/no-missing-end-of-source-newline#true)
+
+
+```yaml
+'no-missing-end-of-source-newline': true
+```
+
+```scss
+// doesn't pass the test
+a { color: pink; }
+
+// passes the test
+a { color: pink; }
+\n
+```
+
+
+### [number-leading-zero](https://stylelint.io/user-guide/rules/list/number-leading-zero#always)
+
+
+```yaml
+'number-leading-zero': 'always'
+```
+
+```scss
+// doesn't pass the test
+a { line-height: .5; }
+
+a { transform: translate(2px, .4px); }
+
+// passes the test
+a { line-height: 0.5; }
+
+a { transform: translate(2px, 0.4px); }
+```
+
+
+### [number-max-precision](https://stylelint.io/user-guide/rules/list/number-max-precision#options)
+
+
+```yaml
+'number-max-precision': 4
+```
+
+```scss
+// doesn't pass the test
+a { top: 3.245634px; }
+
+// passes the test
+a { top: 3.2456px; }
+
+a { top: 3.25px; }
+```
+
+
+### [number-no-trailing-zeros](https://stylelint.io/user-guide/rules/list/number-no-trailing-zeros#true)
+
+
+```yaml
+'number-no-trailing-zeros': true
+```
+
+```scss
+// doesn't pass the test
+a { top: 1.0px }
+
+// passes the test
+a { top: 1px }
+```
+
+
+### [property-case](https://stylelint.io/user-guide/rules/list/property-case#lower)
+
+
+```yaml
+'property-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+a { Width: 1px }
+
+a { WIDTH: 1px }
+
+// passes the test
+a { width: 1px }
+```
+
+
+### [property-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/property-no-vendor-prefix#true)
+
+
+```yaml
+'property-no-vendor-prefix': true
+```
+
+```scss
+// doesn't pass the test
+a { -webkit-transform: scale(1); }
+
+a { -moz-columns: 2; }
+
+// passes the test
+a { transform: scale(1); }
+
+a { columns: 2; }
+
+a { -webkit-touch-callout: none; }
+```
+
+
+### [rule-empty-line-before](https://stylelint.io/user-guide/rules/list/rule-empty-line-before#always-multi-line)
+
+
+```yaml
+'rule-empty-line-before': [
+  'always-multi-line',
+  {
+    except: ['first-nested'],
+    ignore: ['after-comment'],
+  }
+]
+```
+
+```scss
+// doesn't pass the test
+a {
+  color: red;
+}
+b {
+  color: blue;
+}
+
+// passes the test
+a {
+  color: red;
+}
+
+b {
+  color: blue;
+}
+```
+
+
+### [selector-attribute-brackets-space-inside](https://stylelint.io/user-guide/rules/list/selector-attribute-brackets-space-inside#never)
+
+
+```yaml
+'selector-attribute-brackets-space-inside': 'never'
+```
+
+```scss
+// doesn't pass the test
+[ target] {}
+
+[target ] {}
+
+[ target ] {}
+
+// passes the test
+[target] {}
+```
+
+
+### [selector-attribute-operator-space-after](https://stylelint.io/user-guide/rules/list/selector-attribute-operator-space-after#never)
+
+
+```yaml
+'selector-attribute-operator-space-after': 'never'
+```
+
+```scss
+// doesn't pass the test
+[target= _blank] {}
+
+// passes the test
+[target=_blank] {}
+```
+
+
+### [selector-attribute-operator-space-before](https://stylelint.io/user-guide/rules/list/selector-attribute-operator-space-before#never)
+
+
+```yaml
+'selector-attribute-operator-space-before': 'never'
+```
+
+```scss
+// doesn't pass the test
+[target =_blank] {}
+
+// passes the test
+[target=_blank] {}
+```
+
+
+### [selector-attribute-quotes](https://stylelint.io/user-guide/rules/list/selector-attribute-quotes#always)
+
+
+```yaml
+'selector-attribute-quotes': 'always'
+```
+
+```scss
+// doesn't pass the test
+[title=flower] {}
+
+// passes the test
+[title="flower"] {}
+```
+
+
+### [selector-class-pattern](https://stylelint.io/user-guide/rules/list/selector-class-pattern#options)
+
+
+```yaml
+  'selector-class-pattern': ["^(--[a-z][a-z0-9]*)(-[a-z0-9]+)*$|^([a-z][a-z0-9]*)(((-)|(__))[a-z0-9]+)*$", {
+  'message': "Expected format: .foo-bar | .--foo-bar | .foo-bar__baz (selector-class-pattern)",
+  'resolveNestedSelectors': true
+}]
+```
+
+```scss
+// doesn't pass the test
+.foo_bar {}
+
+.fooBar {}
+
+.foo--bar {}
+
+// passes the test
+.foo-bar {}
+
+.--foo-bar {}
+
+.foo__bar {}
+
+.foo-bar__baz {}
+```
+
+
+### [selector-combinator-space-after](https://stylelint.io/user-guide/rules/list/selector-combinator-space-after#always)
+
+
+```yaml
+'selector-combinator-space-after': 'always'
+```
+
+```scss
+// doesn't pass the test
+a +b { color: pink; }
+
+a>b { color: pink; }
+
+// passes the test
+a + b { color: pink; }
+
+a > b { color: pink; }
+```
+
+
+### [selector-combinator-space-before](https://stylelint.io/user-guide/rules/list/selector-combinator-space-before#always)
+
+
+```yaml
+'selector-combinator-space-before': 'always'
+```
+
+```scss
+// doesn't pass the test
+a+ b { color: pink; }
+
+a>b { color: pink; }
+
+// passes the test
+a + b { color: pink; }
+
+a > b { color: pink; }
+```
+
+
+### [selector-descendant-combinator-no-non-space](https://stylelint.io/user-guide/rules/list/selector-descendant-combinator-no-non-space#true)
+
+
+```yaml
+'selector-descendant-combinator-no-non-space': true
+```
+
+```scss
+// doesn't pass the test
+.foo  .bar {}
+
+.foo
+.bar {}
+
+// passes the test
+.foo .bar {}
+```
+
+
+### [selector-id-pattern](https://stylelint.io/user-guide/rules/list/selector-id-pattern#options)
+
+
+```yaml
+'selector-id-pattern': [
+  '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected id selector to be kebab-case'
+  }
+]
+```
+
+```scss
+// doesn't pass the test
+#foo_bar {}
+
+#foo--bar {}
+
+#fooBar {}
+
+// passes the test
+#foo-bar {}
+```
+
+
+### [selector-list-comma-newline-after](https://stylelint.io/user-guide/rules/list/selector-list-comma-newline-after#always)
+
+
+```yaml
+'selector-list-comma-newline-after': 'always'
+```
+
+```scss
+// doesn't pass the test
+a, b { color: pink; }
+
+a
+, b { color: pink; }
+
+// passes the test
+a,
+b { color: pink; }
+```
+
+
+### [selector-list-comma-space-before](https://stylelint.io/user-guide/rules/list/selector-list-comma-space-before#never)
+
+
+```yaml
+'selector-list-comma-space-before': 'never'
+```
+
+```scss
+// doesn't pass the test
+a ,b { color: pink; }
+
+a , b { color: pink; }
+
+// passes the test
+a,
+b { color: pink; }
+```
+
+
+### [selector-max-empty-lines](https://stylelint.io/user-guide/rules/list/selector-max-empty-lines#options)
+
+
+```yaml
+'selector-max-empty-lines': 0
+```
+
+```scss
+// doesn't pass the test
+a,
+
+b {
+  color: red;
+}
+
+// passes the test
+a,
+b {
+  color: red;
+}
+```
+
+
+### [selector-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/selector-no-vendor-prefix#true)
+
+
+```yaml
+'selector-no-vendor-prefix': true
+```
+
+```scss
+// doesn't pass the test
+input::-moz-placeholder {}
+
+// passes the test
+input::placeholder {}
+```
+
+
+### [selector-not-notation](https://stylelint.io/user-guide/rules/list/selector-not-notation#complex)
+
+
+```yaml
+'selector-not-notation': 'complex'
+```
+
+```scss
+// doesn't pass the test
+:not(a):not(div) {}
+
+// passes the test
+:not(a, div) {}
+```
+
+
+### [selector-pseudo-class-case](https://stylelint.io/user-guide/rules/list/selector-pseudo-class-case#lower)
+
+
+```yaml
+'selector-pseudo-class-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+a:Hover {}
+
+a:hOvEr {}
+// passes the test
+a:hover {}
+```
+
+
+### [selector-pseudo-class-parentheses-space-inside](https://stylelint.io/user-guide/rules/list/selector-pseudo-class-parentheses-space-inside#never)
+
+
+```yaml
+'selector-pseudo-class-parentheses-space-inside': 'never'
+```
+
+```scss
+// doesn't pass the test
+input:not( [type="submit"] ) {}
+
+input:not( [type="submit"]) {}
+// passes the test
+input:not([type="submit"]) {}
+```
+
+
+### [selector-pseudo-element-case](https://stylelint.io/user-guide/rules/list/selector-pseudo-element-case#lower)
+
+
+```yaml
+'selector-pseudo-element-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+a:Before {}
+
+a:bEfOrE {}
+// passes the test
+a:before {}
+```
+
+
+### [selector-type-case](https://stylelint.io/user-guide/rules/list/selector-type-case#lower)
+
+
+```yaml
+'selector-type-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+A {}
+
+LI {}
+// passes the test
+a {}
+
+li {}
+```
+
+
+### [shorthand-property-no-redundant-values](https://stylelint.io/user-guide/rules/list/shorthand-property-no-redundant-values#true)
+
+
+```yaml
+'shorthand-property-no-redundant-values': true
+```
+
+```scss
+// doesn't pass the test
+a { margin: 1px 1px; }
+
+a { margin: 1px 1px 1px 1px; }
+
+// passes the test
+a { margin: 1px; }
+
+a { margin: 1px 1px 1px 2px; }
+```
+
+
+### [string-quotes](https://stylelint.io/user-guide/rules/list/string-quotes#double)
+
+
+```yaml
+'string-quotes': 'double'
+```
+
+```scss
+// doesn't pass the test
+a { content: 'x'; }
+
+// passes the test
+a { content: "x"; }
+```
+
+
+### [unit-case](https://stylelint.io/user-guide/rules/list/unit-case#lower)
+
+
+```yaml
+'unit-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+a { width: 10PX; }
+
+a { width: 10Px; }
+
+// passes the test
+a { width: 10px; }
+```
+
+
+### [value-keyword-case](https://stylelint.io/user-guide/rules/list/value-keyword-case#lower)
+
+
+```yaml
+'value-keyword-case': 'lower'
+```
+
+```scss
+// doesn't pass the test
+a { display: Block; }
+
+a { display: bLoCk; }
+
+// passes the test
+a { display: block; }
+```
+
+
+### [value-list-comma-newline-after](https://stylelint.io/user-guide/rules/list/value-list-comma-newline-after#always-multi-line)
+
+
+```yaml
+'value-list-comma-newline-after': 'always-multi-line'
+```
+
+```scss
+// doesn't pass the test
+a { background-size: 0
+, 0; }
+
+// passes the test
+a { background-size: 0, 0; }
+
+a { background-size: 0,
+      0; 
+}
+```
+
+
+### [value-list-comma-space-after](https://stylelint.io/user-guide/rules/list/value-list-comma-space-after#always-single-line)
+
+
+```yaml
+'value-list-comma-space-after': 'always-single-line'
+```
+
+```scss
+// doesn't pass the test
+a { background-size: 0,0; }
+
+// passes the test
+a { background-size: 0, 0; }
+```
+
+
+### [value-list-comma-space-before](https://stylelint.io/user-guide/rules/list/value-list-comma-space-before#never)
+
+
+```yaml
+'value-list-comma-space-before': 'never'
+```
+
+```scss
+// doesn't pass the test
+a { background-size: 0 ,0; }
+
+// passes the test
+a { background-size: 0, 0; }
+```
+
+
+### [value-list-max-empty-lines](https://stylelint.io/user-guide/rules/list/value-list-max-empty-lines#options)
+
+
+```yaml
+'value-list-max-empty-lines': 0
+```
+
+```scss
+// doesn't pass the test
+a {
+  box-shadow: inset 0 2px 0 #dcffa6,
+
+  0 2px 5px #000;
+}
+
+// passes the test
+a {
+  box-shadow: inset 0 2px 0 #dcffa6,
+  0 2px 5px #000;
+}
+```
+
+
+### [value-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/value-no-vendor-prefix#true)
+
+
+```yaml
+'value-no-vendor-prefix': [true, { ignoreValues: ["box"] }]
+```
+
+```scss
+// doesn't pass the test
+a { display: -webkit-flex; }
+
+a { max-width: -moz-max-content; }
+
+// passes the test
+a { display: flex; }
+
+a { max-width: max-content; }
 ```
 
 
