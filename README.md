@@ -264,7 +264,7 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { opacity: 0.5 }
 
 a { color: rgb(0 0 0 / 0.5) }
@@ -290,7 +290,7 @@ a { color: rgb(0 0 0 / 50%) }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {} @media {}
 
 a {}
@@ -311,7 +311,7 @@ a {}
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 @Media (min-width: 50em) {}
 
 @MEDIA (min-width: 50em) {}
@@ -329,7 +329,7 @@ a {}
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media(min-width: 700px) {}
 
 @media  (min-width: 700px) {}
@@ -347,7 +347,7 @@ a {}
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 @-webkit-keyframes anim { 0% { top: 0; } }
 
 @-ms-viewport { orientation: landscape; }
@@ -367,7 +367,7 @@ a {}
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 @import url("x.css"); @import url("y.css");
 
 @import url("x.css"); a {}
@@ -393,7 +393,7 @@ a {}
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   color: pink;
 
@@ -414,7 +414,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink; }b { color: red; }
 
 a { color: pink;
@@ -434,7 +434,7 @@ b { color: red; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   color: pink;}
 
@@ -455,7 +455,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink;}
 
 // passes the test
@@ -471,7 +471,7 @@ a { color: pink; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a{color: pink;
 }
 
@@ -488,7 +488,7 @@ a { color: pink; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {color: pink; }
 
 // passes the test
@@ -504,7 +504,7 @@ a { color: pink; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a{ color: pink; }
 
 // passes the test
@@ -520,7 +520,7 @@ a { color: pink; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: #FFF; }
 
 // passes the test
@@ -538,7 +538,7 @@ a { color: #fff; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: #ffffff; }
 
 a { color: #ffffffaa; }
@@ -566,7 +566,7 @@ a { color: #a4a4a4; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {}
 /* comment */
 
@@ -587,7 +587,7 @@ a {} /* comment */
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 /*comment*/
 
 /*comment */
@@ -615,7 +615,7 @@ a {} /* comment */
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   top: 10px;
   --foo: pink;
@@ -645,7 +645,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 @custom-media fooBar (min-width: 30em);
 
 @custom-media foo_bar (min-width: 30em);
@@ -669,7 +669,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 :root { --foo_bar: 0; }
 
 // passes the test
@@ -685,7 +685,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink ! important; }
 
 a { color: pink! important; }
@@ -703,7 +703,7 @@ a { color: pink !important; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink!important; }
 
 a { color: pink  ! important; }
@@ -721,7 +721,7 @@ a { color: pink !important; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   color: pink; top: 0;
 }
@@ -746,7 +746,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink;top: 0; }
 
 // passes the test
@@ -767,7 +767,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink ; }
 
 a { color: pink ; top: 0 ; }
@@ -787,7 +787,7 @@ a { color: pink; top: 0; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink; top: 3px; }
 
 a,
@@ -815,7 +815,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink }
 
 a { background: orange; color: pink }
@@ -840,7 +840,7 @@ a { @include foo; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   margin-top: 1px;
   margin-right: 2px;
@@ -864,7 +864,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   box-shadow: 0 0 0 1px #5b9dd9,
   0 0 2px 1px rgba(30, 140, 190, 0.8);
@@ -892,7 +892,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   box-shadow:0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
@@ -919,7 +919,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color : pink }
 
 a { color :pink }
@@ -944,7 +944,7 @@ a { color: pink }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   --foo: pink;
   top: 5px;
@@ -968,7 +968,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { font-family: Times New Roman, Times, serif; }
 
 a { font-family: MyFontVersion6, sake_case_font; }
@@ -997,7 +997,7 @@ a { font: 1em 'Times New Roman', Times, serif; }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate(100%
 ,100%) }
 
@@ -1022,7 +1022,7 @@ a {
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate(100%,100%) }
 
 a { transform: translate(100% ,100%) }
@@ -1041,7 +1041,7 @@ a { transform: translate(100%, 100%) }
 
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate(100% , 100%) }
 
 a { transform: translate(100% ,100%) }
@@ -1061,7 +1061,7 @@ a { transform: translate(100%,100%) }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { 
   transform: 
     translate(
@@ -1090,7 +1090,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   width: Calc(5% - 10em);
 }
@@ -1114,7 +1114,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate(1,
     1) }
 
@@ -1146,7 +1146,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate( 1, 1 ) }
 
 a { transform: translate(1, 1 ) }
@@ -1164,7 +1164,7 @@ a { transform: translate(1, 1) }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { background: url(x.jpg); }
 
 @import url(foo.css);
@@ -1188,7 +1188,7 @@ a { background: url('x.jpg'); }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { transform: translate(1, 1)scale(3); }
 
 // passes the test
@@ -1204,7 +1204,7 @@ a { transform: translate(1, 1) scale(3); }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: hsl(198 28% 50%) }
 
 a { color: lch(56.29% 19.86 10 / 15%) }
@@ -1224,7 +1224,7 @@ a { color: lch(56.29% 19.86 10deg / 15%) }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @import url(foo.css);
 
 @import url('foo.css');
@@ -1244,7 +1244,7 @@ indentation: 2
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media print {
 a {
 background-position: top left;
@@ -1279,7 +1279,7 @@ background-position: top left;
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @keyframes fooBaz {}
 
 @keyframes foo_baz {}
@@ -1297,7 +1297,7 @@ background-position: top left;
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { top: 0px }
 
 a { top: 0.000em }
@@ -1317,7 +1317,7 @@ a { transition-delay: 0s; } /* dimension */
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {}
 
 
@@ -1338,7 +1338,7 @@ b {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink; background: orange; margin-left: 10px; margin-top: 24px; padding-left: 20px; padding-right: 20px}
 
 // passes the test
@@ -1361,7 +1361,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (max-width:600px) {}
 
 @media (max-width :600px) {}
@@ -1379,7 +1379,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (max-width :600px) {}
 
 @media (max-width : 600px) {}
@@ -1396,7 +1396,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (MIN-WIDTH: 700px) {}
 
 @media (min-width: 700px) and (ORIENTATION: landscape) {}
@@ -1416,7 +1416,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (-webkit-min-device-pixel-ratio: 1) {}
 
 // passes the test
@@ -1432,7 +1432,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media ( max-width: 300px ) {}
 
 @media ( max-width: 300px) {}
@@ -1450,7 +1450,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (width>=600px) {}
 
 @media (width >=600px) {}
@@ -1468,7 +1468,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media (width>=600px) {}
 
 @media (width>= 600px) {}
@@ -1486,7 +1486,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media screen and (color)
 , projection and (color) {}
 
@@ -1506,7 +1506,7 @@ projection and (color) {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media screen and (color),projection and (color) {}
 
 // passes the test
@@ -1522,7 +1522,7 @@ projection and (color) {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 @media screen and (color) ,projection and (color) {}
 
 // passes the test
@@ -1538,7 +1538,7 @@ projection and (color) {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 \n
 a { color: pink; }
 
@@ -1555,7 +1555,7 @@ a { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink; }·
 
 a { color: pink; }····
@@ -1573,7 +1573,7 @@ a { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { color: pink; }
 
 // passes the test
@@ -1590,7 +1590,7 @@ a { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { line-height: .5; }
 
 a { transform: translate(2px, .4px); }
@@ -1610,7 +1610,7 @@ a { transform: translate(2px, 0.4px); }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { top: 3.245634px; }
 
 // passes the test
@@ -1628,7 +1628,7 @@ a { top: 3.25px; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { top: 1.0px }
 
 // passes the test
@@ -1644,7 +1644,7 @@ a { top: 1px }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { Width: 1px }
 
 a { WIDTH: 1px }
@@ -1662,7 +1662,7 @@ a { width: 1px }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { -webkit-transform: scale(1); }
 
 a { -moz-columns: 2; }
@@ -1690,7 +1690,7 @@ a { -webkit-touch-callout: none; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   color: red;
 }
@@ -1717,7 +1717,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 [ target] {}
 
 [target ] {}
@@ -1737,7 +1737,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 [target= _blank] {}
 
 // passes the test
@@ -1753,7 +1753,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 [target =_blank] {}
 
 // passes the test
@@ -1769,7 +1769,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 [title=flower] {}
 
 // passes the test
@@ -1788,7 +1788,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 .foo_bar {}
 
 .fooBar {}
@@ -1814,7 +1814,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a +b { color: pink; }
 
 a>b { color: pink; }
@@ -1834,7 +1834,7 @@ a > b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a+ b { color: pink; }
 
 a>b { color: pink; }
@@ -1854,7 +1854,7 @@ a > b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 .foo  .bar {}
 
 .foo
@@ -1878,7 +1878,7 @@ a > b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 #foo_bar {}
 
 #foo--bar {}
@@ -1898,7 +1898,7 @@ a > b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a, b { color: pink; }
 
 a
@@ -1918,7 +1918,7 @@ b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a ,b { color: pink; }
 
 a , b { color: pink; }
@@ -1937,7 +1937,7 @@ b { color: pink; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a,
 
 b {
@@ -1960,7 +1960,7 @@ b {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 input::-moz-placeholder {}
 
 // passes the test
@@ -1976,7 +1976,7 @@ input::placeholder {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 :not(a):not(div) {}
 
 // passes the test
@@ -1992,7 +1992,7 @@ input::placeholder {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a:Hover {}
 
 a:hOvEr {}
@@ -2009,7 +2009,7 @@ a:hover {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 input:not( [type="submit"] ) {}
 
 input:not( [type="submit"]) {}
@@ -2026,7 +2026,7 @@ input:not([type="submit"]) {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a:Before {}
 
 a:bEfOrE {}
@@ -2043,7 +2043,7 @@ a:before {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 A {}
 
 LI {}
@@ -2062,7 +2062,7 @@ li {}
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { margin: 1px 1px; }
 
 a { margin: 1px 1px 1px 1px; }
@@ -2082,7 +2082,7 @@ a { margin: 1px 1px 1px 2px; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { content: 'x'; }
 
 // passes the test
@@ -2098,7 +2098,7 @@ a { content: "x"; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { width: 10PX; }
 
 a { width: 10Px; }
@@ -2116,7 +2116,7 @@ a { width: 10px; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { display: Block; }
 
 a { display: bLoCk; }
@@ -2134,7 +2134,7 @@ a { display: block; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { background-size: 0
 , 0; }
 
@@ -2155,7 +2155,7 @@ a { background-size: 0,
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { background-size: 0,0; }
 
 // passes the test
@@ -2171,7 +2171,7 @@ a { background-size: 0, 0; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { background-size: 0 ,0; }
 
 // passes the test
@@ -2187,7 +2187,7 @@ a { background-size: 0, 0; }
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a {
   box-shadow: inset 0 2px 0 #dcffa6,
 
@@ -2210,7 +2210,7 @@ a {
 ```
 
 ```scss
-// doesn't pass the test
+// fails the test
 a { display: -webkit-flex; }
 
 a { max-width: -moz-max-content; }
