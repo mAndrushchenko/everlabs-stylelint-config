@@ -137,20 +137,19 @@ The list of rules:
 More about ignoring rules in the files you can find [here](https://stylelint.io/user-guide/ignore-code/)
 
 
-## Extends
+## Avoiding errors
+Current config includes [``stylelint-config-recommended``](https://stylelint.io/user-guide/rules/list/#avoid-errors). These rules **are not autofixable**. It turns on all the Stylelint rules that help you [avoid errors](https://stylelint.io/user-guide/rules/list/#avoid-errors).
+The config **doesn't include** next rules:
+
+- [at-rule-no-unknown](https://stylelint.io/user-guide/rules/list/at-rule-no-unknown)
+- [comment-no-empty](https://stylelint.io/user-guide/rules/list/comment-no-empty)
+- [function-no-unknown](https://stylelint.io/user-guide/rules/list/function-no-unknown)
 
 
-Everlabs config extends:
-- [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss)
-- [stylelint-config-rational-order](https://github.com/constverum/stylelint-config-rational-order)
-
-The ``stylelint-config-standard-scss`` in turn under hood extends others:
-- [stylelint-config-recommended](https://stylelint.io/user-guide/rules/list/#avoid-errors)
-- [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard/blob/main/index.js)
-- [stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss)
+## CSS rules
 
 
-## Rules
+The list of **CSS** rules that included to the config:
 - [alpha-value-notation](#alpha-value-notation) (autofixable)
 - [at-rule-empty-line-before](#at-rule-empty-line-before) (autofixable)
 - [at-rule-name-case](#at-rule-name-case) (autofixable)
@@ -200,6 +199,7 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [length-zero-no-unit](#length-zero-no-unit) (autofixable)
 - [max-empty-lines](#max-empty-lines) (autofixable)
 - [max-line-length](#max-line-length)
+- [max-nesting-depth](#max-nesting-depth)
 - [media-feature-colon-space-after](#media-feature-colon-space-after) (autofixable)
 - [media-feature-colon-space-before](#media-feature-colon-space-before) (autofixable)
 - [media-feature-name-case](#media-feature-name-case) (autofixable)
@@ -217,7 +217,6 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [number-max-precision](#number-max-precision)
 - [number-no-trailing-zeros](#number-no-trailing-zeros) (autofixable)
 - [property-case](#property-case) (autofixable)
-- [property-no-vendor-prefix](#property-no-vendor-prefix) (autofixable)
 - [rule-empty-line-before](#rule-empty-line-before) (autofixable)
 - [selector-attribute-brackets-space-inside](#selector-attribute-brackets-space-inside) (autofixable)
 - [selector-attribute-operator-space-after](#selector-attribute-operator-space-after) (autofixable)
@@ -248,7 +247,139 @@ The ``stylelint-config-standard-scss`` in turn under hood extends others:
 - [value-no-vendor-prefix](#value-no-vendor-prefix) (autofixable)
 
 
-## Examples
+## SCSS rules
+
+
+The list of **SCSS** rules that included to the config:
+- [at-extend-no-missing-placeholder](#at-extend-no-missing-placeholder)
+- [at-if-no-null](#at-if-no-null)
+- [at-import-no-partial-leading-underscore](#at-import-no-partial-leading-underscore)
+- [at-import-partial-extension](#at-import-partial-extension) (autofixable)
+- [at-rule-no-unknown](#at-rule-no-unknown)
+- [at-else-if-parentheses-space-before](#at-else-if-parentheses-space-before)
+- [at-function-parentheses-space-before](#at-function-parentheses-space-before) (autofixable)
+- [at-function-pattern](#at-function-pattern))
+- [at-mixin-argumentless-call-parentheses](#at-mixin-argumentless-call-parentheses) (autofixable)
+- [at-mixin-parentheses-space-before](#at-mixin-parentheses-space-before) (autofixable)
+- [at-mixin-pattern](#at-mixin-pattern)
+- [comment-no-empty](#comment-no-empty)
+- [dollar-variable-colon-space-after](#dollar-variable-colon-space-after) (autofixable)
+- [dollar-variable-colon-space-before](#dollar-variable-colon-space-before) (autofixable)
+- [dollar-variable-empty-line-before](#dollar-variable-empty-line-before) (autofixable)
+- [dollar-variable-pattern](#dollar-variable-pattern)
+- [dollar-variable-no-missing-interpolation](#dollar-variable-no-missing-interpolation)
+- [double-slash-comment-empty-line-before](#double-slash-comment-empty-line-before) (autofixable)
+- [double-slash-comment-whitespace-inside](#double-slash-comment-whitespace-inside)
+- [no-duplicate-mixins](#no-duplicate-mixins)
+- [operator-no-newline-after](#operator-no-newline-after)
+- [operator-no-newline-before](#operator-no-newline-before)
+- [operator-no-unspaced](#operator-no-unspaced)
+- [percent-placeholder-pattern](#percent-placeholder-pattern)
+
+
+## CSS rules order
+Stylelint config that sorts related property declarations by grouping together following the order:
+
+1. Custom properties
+2. Dollar variables
+3. Positioning
+4. Box Model
+5. Typography
+6. Visual
+7. Animation
+8. Misc
+9. Before and after pseudo elements
+10. First and last child selectors
+11. Class modifications
+12. Nested related selectors
+12. Nested selectors
+
+```yaml
+order/order: [
+  "custom-properties",
+  "dollar-variables",
+  { type: "at-rule", name: "include", hasBlock: false },
+  "declarations",
+  { type: "rule", selector: "&:before" },
+  { type: "rule", selector: "&:after" },
+  "rules",
+  { type: "rule", selector: "&:first-child" },
+  { type: "rule", selector: "&:last-child" },
+
+  #    Next 3 rules related to class orders and need to test in the project
+  { type: "rule", selector: "&\\..+" },
+  { type: "rule", selector: "&__.+" },
+  { type: "rule", selector: "." }
+]
+```
+
+```scss
+.declaration-order {
+  /* Custom properties */
+  --font-size: 20px;
+  --line-height: 1.5;
+
+  /* Dollar variables */
+  $container-width: 1400px;
+  $secondary-color: #194560;
+  
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+
+  /* Box Model */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  padding: 10px;
+
+  /* Typography */
+  color: #888;
+  font: normal 16px Helvetica, sans-serif;
+  line-height: 1.3;
+  text-align: center;
+
+  /* Visual */
+  background-color: #eee;
+  border: 1px solid #888;
+  border-radius: 4px;
+  opacity: 1;
+
+  /* Animation */
+  transition: all 1s;
+
+  /* Misc */
+  user-select: none;
+
+  /* before and after pseudo elements */
+  &:before {}
+
+  &:after {}
+
+  /* first-child and last-child selectors */
+  &:first-child {}
+
+  &:last-child {}
+
+  /* Class modifications */
+  &.--foo-bar {}
+  
+  /* Nested related selectors */
+  &__baz {}
+  
+  /* Nested selectors */
+  .foo-bar {}
+}
+```
+
+
+## Configs and examples of CSS rules
 
 
 ### [alpha-value-notation](https://stylelint.io/user-guide/rules/list/alpha-value-notation/#percentage)
@@ -283,7 +414,8 @@ a { color: rgb(0 0 0 / 50%) }
   'always',
   {
     except: ['blockless-after-same-name-blockless', 'first-nested'],
-    ignore: ['after-comment']
+    ignore: ['after-comment'],
+    ignoreAtRules: ['else']
   }
 ]
 ```
@@ -409,7 +541,10 @@ a {
 ### [block-closing-brace-newline-after](https://stylelint.io/user-guide/rules/list/block-closing-brace-newline-after#always)
 
 ```yaml
-'block-closing-brace-newline-after': 'always'
+'block-closing-brace-newline-after': 'always',
+  {
+    ignoreAtRules: ['if', 'else']
+  }
 ```
 
 
@@ -1353,6 +1488,40 @@ a {
 ```
 
 
+### [max-nesting-depth](https://stylelint.io/user-guide/rules/list/max-nesting-depth#options)
+
+
+```yaml
+max-nesting-depth: [ 4, { ignore: [ "pseudo-classes" ] } ]
+```
+
+```scss
+// fails the test
+a {
+  & .foo { /* 1 */
+    &__foo { /* 2 */
+      & > .bar { /* 3 */
+        & .baz { /* 4 */
+          .foo-baz {}  /* 5 */
+        }
+      } 
+    }
+  }
+}
+
+// passes the test
+a {
+  & .foo { /* 1 */
+    &__foo { /* 2 */
+      & > .bar { /* 3 */
+        & .baz {}
+      }
+    }
+  }
+}
+```
+
+
 ### [media-feature-colon-space-after](https://stylelint.io/user-guide/rules/list/media-feature-colon-space-after#always)
 
 
@@ -1651,28 +1820,6 @@ a { WIDTH: 1px }
 
 // passes the test
 a { width: 1px }
-```
-
-
-### [property-no-vendor-prefix](https://stylelint.io/user-guide/rules/list/property-no-vendor-prefix#true)
-
-
-```yaml
-'property-no-vendor-prefix': true
-```
-
-```scss
-// fails the test
-a { -webkit-transform: scale(1); }
-
-a { -moz-columns: 2; }
-
-// passes the test
-a { transform: scale(1); }
-
-a { columns: 2; }
-
-a { -webkit-touch-callout: none; }
 ```
 
 
@@ -2222,4 +2369,524 @@ a { max-width: max-content; }
 ```
 
 
-# END_OF_THE_FILE
+##  Configs and examples of SCSS rules
+
+
+### [at-extend-no-missing-placeholder](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-extend-no-missing-placeholder/README.md#at-extend-no-missing-placeholder)
+
+```yaml
+'scss/at-extend-no-missing-placeholder': true
+```
+
+
+```scss
+// fails the test
+p {
+  @extend .some-class;
+}
+
+p {
+  @extend #some-identifer;
+}
+
+// passes the test
+p {
+  @extend %placeholder;
+}
+```
+
+
+### [at-if-no-null](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-if-no-null/README.md#true)
+
+```yaml
+'scss/at-if-no-null': true
+```
+
+
+```scss
+// fails the test
+a {
+  @if $x == null {}
+}
+
+a {
+  @if $x != null {}
+}
+
+// passes the test
+a {
+  @if $x {}
+}
+
+a {
+  @if not $x {}
+}
+```
+
+
+### [at-import-no-partial-leading-underscore](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-no-partial-leading-underscore/README.md#at-import-no-partial-leading-underscore)
+
+```yaml
+'scss/at-import-no-partial-leading-underscore': true
+```
+
+
+```scss
+// fails the test
+@import "_foo";
+@import "path/_bar";
+
+// passes the test
+@import "foo";
+@import "path/bar";
+```
+
+
+### [at-import-partial-extension](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension/README.md#never)
+
+```yaml
+'scss/at-import-partial-extension': 'never'
+```
+
+
+```scss
+// fails the test
+@import "foo.scss";
+@import "path/bar.less";
+
+// passes the test
+@import "foo";
+@import "path/bar";
+```
+
+
+### [at-rule-no-unknown](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-rule-no-unknown/README.md#true)
+
+```yaml
+'scss/at-rule-no-unknown': true
+```
+
+
+```scss
+// fails the test
+@unknown {}
+
+// passes the test
+@function foo () {}
+
+@while ($i == 1) {}
+
+@media (max-width: 960px) {}
+```
+
+
+### [at-else-if-parentheses-space-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-else-if-parentheses-space-before/README.md#always)
+
+```yaml
+'scss/at-else-if-parentheses-space-before': 'always'
+```
+
+
+```scss
+// fails the test
+@else if($condition) { }
+
+@else if  ($condition) { }
+  
+// passes the test
+@else if $condition { }
+```
+
+
+### [at-function-parentheses-space-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-function-parentheses-space-before/README.md#never)
+
+```yaml
+'scss/at-function-parentheses-space-before': 'never'
+```
+
+
+```scss
+// fails the test
+@function foo ($arg) { }
+  
+// passes the test
+@function foo($arg) { }
+```
+
+
+### [at-function-pattern](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-function-pattern/README.md#options)
+
+```yaml
+'scss/at-function-pattern': [
+  '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected function name to be kebab-case (scss/at-function-pattern)'
+  }
+]
+```
+
+
+```scss
+// fails the test
+@function fooBar($arg) { }
+  
+// passes the test
+@function foo-bar($arg) { }
+```
+
+
+### [at-mixin-argumentless-call-parentheses](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-argumentless-call-parentheses/README.md#never)
+
+```yaml
+'scss/at-mixin-argumentless-call-parentheses': 'never'
+```
+
+
+```scss
+// fails the test
+@include mixin-name();
+  
+// passes the test
+@include mixin-name;
+```
+
+
+### [at-mixin-parentheses-space-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-parentheses-space-before/README.md#never)
+
+```yaml
+'scss/at-mixin-parentheses-space-before': 'never'
+```
+
+
+```scss
+// fails the test
+@mixin foo ($arg) { }
+  
+// passes the test
+@mixin foo($arg) { }
+```
+
+
+### [at-mixin-pattern](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-pattern/README.md#options)
+
+```yaml
+'scss/at-mixin-pattern': [
+  '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected mixin name to be kebab-case (scss/at-mixin-pattern)',
+  }
+]
+```
+
+
+```scss
+// fails the test
+@mixin fooBar($arg) { }
+  
+// passes the test
+@mixin foo-bar($arg) { }
+```
+
+
+### [comment-no-empty](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/comment-no-empty/README.md#true)
+
+```yaml
+'scss/comment-no-empty': true
+```
+
+
+```scss
+// fails the test
+/**/
+/* */
+
+// passes the test
+/* comment */
+
+/*
+ * Multi-line Comment
+**/
+```
+
+
+### [dollar-variable-colon-space-after](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-colon-space-after/README.md#always)
+
+```yaml
+'scss/dollar-variable-colon-space-after': 'always'
+```
+
+
+```scss
+// fails the test
+a { $var :10px }
+
+$var:10px;
+  
+// passes the test
+a { $var: 10px }
+
+$var: 10px;
+```
+
+
+### [dollar-variable-colon-space-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-colon-space-before/README.md#never)
+
+```yaml
+'scss/dollar-variable-colon-space-before': 'never'
+```
+
+
+```scss
+// fails the test
+a { $var :10px }
+
+$var :10px;
+  
+// passes the test
+a { $var: 10px }
+
+$var: 10px;
+```
+
+
+### [dollar-variable-empty-line-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-empty-line-before/README.md#always)
+
+```yaml
+'scss/dollar-variable-empty-line-before': [
+  'always',
+  {
+    except: ['after-dollar-variable', 'first-nested'],
+    ignore: ['after-comment', 'inside-single-line-block']
+  }
+]
+```
+
+
+```scss
+// fails the test
+a {
+  width: 100px;
+}
+$baz: 200px;
+  
+// passes the test
+$foo: 200px;
+$bar: 200px;
+
+a {
+  width: 100px;
+}
+
+$baz: 200px;
+```
+
+
+### [dollar-variable-pattern](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-pattern/README.md#options)
+
+```yaml
+'scss/dollar-variable-pattern': [
+  '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected variable to be kebab-case (scss/dollar-variable-pattern)'
+  }
+]
+```
+
+
+```scss
+// fails the test
+$fooBar: 200px;
+
+$foo_bar: 300px;
+  
+// passes the test
+$foo: 200px;
+
+$foo-bar: 300px;
+```
+
+
+### [dollar-variable-no-missing-interpolation](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-no-missing-interpolation/README.md#dollar-variable-no-missing-interpolation)
+
+```yaml
+'scss/dollar-variable-no-missing-interpolation': true
+```
+
+
+```scss
+// fails the test
+$container-width: 100px;
+
+.foo {
+  max-width: $container-width; 
+}
+
+// passes the test
+$container-width: 100px;
+
+.foo {
+  max-width: #{$container-width};
+}
+```
+
+
+### [double-slash-comment-empty-line-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/double-slash-comment-empty-line-before/README.md#always)
+
+```yaml
+'scss/double-slash-comment-empty-line-before': [
+  'always',
+  {
+    except: ['first-nested'],
+    ignore: ['between-comments', 'stylelint-commands']
+  }
+]
+```
+
+
+```scss
+// fails the test
+a {}
+// comment
+
+
+// passes the test
+a {}
+
+// comment
+```
+
+
+### [double-slash-comment-whitespace-inside](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/double-slash-comment-whitespace-inside/README.md#always)
+
+```yaml
+'scss/double-slash-comment-whitespace-inside': 'always'
+
+```
+
+
+```scss
+// fails the test
+//comment
+
+
+// passes the test
+// comment
+```
+
+
+### [no-duplicate-mixins](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-duplicate-mixins/README.md#true)
+
+```yaml
+'scss/no-duplicate-mixins': true
+```
+
+
+```scss
+// fails the test
+@mixin font-size-default {
+  font-size: 16px;
+}
+@mixin font-size-default {
+  font-size: 18px;
+}
+
+// passes the test
+@mixin font-size-default {
+  font-size: 16px;
+}
+
+@mixin font-size-lg {
+  font-size: 18px;
+}
+
+```
+
+
+### [operator-no-newline-after](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/operator-no-newline-after/README.md#operator-no-newline-after)
+
+```yaml
+'scss/operator-no-newline-after': true
+```
+
+
+```scss
+// fails the test
+a { width: 10 +
+1; }
+
+// passes the test
+a { width: 10 + 1; }
+```
+
+
+### [operator-no-newline-before](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/operator-no-newline-before/README.md#operator-no-newline-before)
+
+```yaml
+'scss/operator-no-newline-before': true
+```
+
+
+```scss
+// fails the test
+a { width: 10
++ 1; }
+
+// passes the test
+a { width: 10 + 1; }
+```
+
+
+### [operator-no-unspaced](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/operator-no-unspaced/README.md#operator-no-unspaced)
+
+```yaml
+'scss/operator-no-unspaced': true
+```
+
+
+```scss
+// fails the test
+a { width: 10+1; }
+
+a { width: 10+ 1; }
+
+// passes the test
+a { width: 10 + 1; }
+```
+
+
+### [percent-placeholder-pattern](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/percent-placeholder-pattern/README.md#percent-placeholder-pattern)
+
+```yaml
+'scss/percent-placeholder-pattern': [
+  '^(-?[a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+  {
+    message: 'Expected placeholder to be kebab-case (percent-placeholder-pattern)'
+  }
+]
+```
+
+
+```scss
+// fails the test
+%fooBar { width: 20px }
+
+%foo_bar { width: 20px }
+
+// passes the test
+%foo-bar { width: 20px }
+```
+
+
+
+
+## Extends
+
+
+Everlabs config extends:
+- [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss)
+- [stylelint-config-rational-order](https://github.com/constverum/stylelint-config-rational-order)
+
+The ``stylelint-config-standard-scss`` in turn under hood extends others:
+- [stylelint-config-recommended](https://stylelint.io/user-guide/rules/list/#avoid-errors)
+- [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard/blob/main/index.js)
+- [stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss)
